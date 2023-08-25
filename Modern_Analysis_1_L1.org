@@ -1,0 +1,60 @@
+#+title: Modern Analysis 1 Lecture 1
+
+* Nomenclature
+- $\mathbb{D}$ = Definition
+- $\mathbb{E}$ = Exercise or Example
+- $\bigvee$ = logic "OR"
+- $\bigwedge$ = logic "AND"
+- $\mathbb{M}$ = Personal Understanding
+* Partial Order
+$\mathbb{D}$: A (partial) order on the set S is a relation "\leq" on S that is
+1. reflexive:
+   - What is Reflexive Relation?
+     In set theory, a binary relation on A is said to be a *reflexive relation* if every element of the set is related to itself. For example, define a relation on the set of integers \mathbb{Z} as 'is equal to'. Now, we know that each integer is equal to itself such as 0=0, 1=1, and so on. This implies every integer is related to itself. Hence, the relation 'is equal to' on the set $\mathbb{Z}$ is a reflexive relation.
+   - $\mathbb{D}$: A binary relation R defined on a set A is said to be reflexive if, for every element a\in A, we have aRa, that is, (a,a) \in R.
+   - $\mathbb{M}$ if R is a relation and is defined for a set A, this relation is reflexive if aRa is true. $\mathbb{E}$ for integer set $\mathbb{Z}$, if R is defined as /leq, then since 1 \in $\mathbb{Z}$ and 1 \leq 1 is ture. Hence, R = \leq is a reflexive relation. Counter $\mathbb{E}$ if R is defined as <, then since 1 \in $\mathbb{Z}$ and 1 < 1 is false. Hence, < is not a reflexive relationship.
+2. antisymmetric: a \leq b $\bigwedge$ b leq a \Rightarrow a = b
+3. transitive: a \leq b $\bigwedge$ b \leq c \Rightarrow a \leq c
+
+
+$\mathbb{D}$ \leq is *total* iff \forall a,b \in S, a \leq b $\bigvee$ b \leq a
+* Strict Order
+$\mathbb{D}$ A *strict order* on S is a relation < that is
+1. irreflexive;
+2. transitive: a < b $\bigwedge$ b < c \Rightarrow a < c.
+
+
+Note: from PO (partial order) \leftrightarrow SO (strict order):
+1. \rightarrow: Given \leq, $\mathbb{D}$ a < b := (a \leq b) $\bigwedge$ (a \neq b)
+   #+begin_proof
+   (Proof via Definition)\\
+   1) Show < is transitive, i.e. a \leq c $\bigwedge$ a \neq c: \\
+      Spse a < b and b < c, i.e. spse (a \leq b) $\bigwedge$ (a \neq b) $\bigwedge$ (b \leq c) $\bigwedge$ (b \neq c),\\
+      \because According to $\mathbb{D}$ of partial order, \leq is transitive,\\
+      \therefore a \leq c \\
+      Spse a = c\\
+      Then 1. a \leq b and 2. b \leq a\\
+      \Rightarrow a = b (as \leq is antisymmetric)\\
+      but a \neq b, $\Rightarrow\!\Leftarrow$ \\
+      Thus, < is transitive.
+   2) Show < is irreflexive\\
+      a < a \Rightarrow (a \leq a) $\bigwedge$ (a \neq a)\\
+      (\neg (a \neq a) is part of $\mathbb{D}$)\\
+      Why? This proof seems trivial to me.这个地方到底证明了什么? >的定义已经很明显了，为什么还要证明?
+   #+end_proof
+2. \leftarrow: Given <, $\mathbb{D}$ a \leq b := (a < b) $\bigvee$ (a=b)
+
+
+$\mathbb{E}$ X is any set, S = $\mathbb{P}(x)$ i.e. power set. For A, B \in S, A \leq B := A \subseteq B defines a partial order. Is it total?\\
+Ans: not aways. It is not total when and only when |x| \leq 1.\\
+Note: Rudin only considers total strict orders, coz Rudin says "order is transitive and trichotomous (i.e. a < b $\bigvee$ a = b $\bigvee$ a > b )"
+* Bounds
+- $\mathbb{D}$ Let <  be an order on S, say a \in S is *greatest* iff \forall s \in S, s \leq a.
+- $\mathbb{E}$ How many greatest elements do S contain?
+    Ans: There may be none. e.g. let S = $\mathbb{P}(x)\setminus\{x\}$ where $\mathbb{P}(x)$ denotes the power set of x. If there are greatest element, it will be unique.
+- $\mathbb{D}$ Let (S, \leq) be given and A \subseteq S. b \in S is an upper bound for A iff \forall a \in A, a \leq b, and b needn't be an element of A.\\
+    We say A is bounded above iff such a b exists.
+- $\mathbb{D}$ Given (S, \leq), the *least upper bound* of A in S is the [least] [upper bound] of A in S, when such exists. \\
+  Note: the set of UBs for A may not have a least element. If it has one, it is unique and called the supremum of A (sup(A) or lub(A)).\\
+  Similar concepts exist for the greatest lower bound: inf(A) or glb(A).
+- *THM*: for (S, \leq), IF each nonempty subset of S that is bounded above has a lub, THEN, each nonempty subset of S that is bounded below has a glb.

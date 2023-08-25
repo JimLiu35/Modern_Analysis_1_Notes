@@ -1,0 +1,50 @@
+#+title: Modern Analysis 1 Lecture 2
+* Recall Lecture 1
+- $\mathbb{D}$ The east upper bound of A \subseteq S is the least element of the set {all UBs of A}.\\
+  The lub may not exist; when it does, it is unique.
+- Notation: sup(A) or lub(A)
+- sup(A) needn't lie in A.\\
+  $\mathbb{E}$ Let S = $\mathbb{P}(X)$, |X| > 1, A = {all *proper* subsets of X} \Rightarrow A $\subsetneq$ S. In this case, sup(A) = X \notin A.
+- If sup(A) \in A, then sup(A) is the greatest or largest element of A.
+- *THM*: for (S, \leq), IF each nonempty subset of S that is bounded above has a sup, THEN, each nonempty subset of S that is bounded below has an inf.
+  #+ATTR_LATEX: :caption [Proof]
+  #+begin_proof
+  Let A be a nonempty subset of S that is bounded below. Let B be the set of LBs for A, and B \subset S.\\
+  A is bounded below \Rightarrow B \neq \emptyset \\
+  A \neq \emptyset \Rightarrow B is bounded above by any a \in A.\\
+  Let sup(B) = \gamma. We claim that \gamma is a LB for A, i.e. \forall a \in A, \gamma \leq a.\\
+  This claim implies that \gamma \in B, sup(B) \in B.\\
+  By $\mathbb{D}$ B, let a \in A, then \forall b \in B, b \leq a. In other words, a is an UB for B.\\
+  Thus, \gamma \leq a because \gamma is the least UB.\\
+  By the previous note, \gamma is the greatest element of B, i.e. the greatest lower bound of A.
+  #+end_proof
+* Conditional Complete
+- This is equivalent to the least UB property.
+- $\mathbb{D}$ The ordered set S is call *conditional complete* (or has the least UB property) iff it satisfies the hypothesis/conclusion of the previous theorem.
+- $\mathbb{E}$ $\mathbb{P}(X)$ is complete.
+  - Let A \subseteq $\mathbb{P}(x)$, here A is called a family of sets, i.e. whose elements are sets.\\
+    Then sup(A) = $\bigcup$ A, inf(A) = $\bigcap$ A, where $\bigcup$ A denotes the union of all sets in A.\\
+    Note that $\bigcap$ \emptyset = X, and $\bigcup$ \emptyset = \empthset
+* Algebra
+$\mathbb{D}$ A field of a set F with operations "+" and "\times" satisfying:
+- Additative axioms:
+  1. a + b = b + a;
+  2. a + (b + c) = (a + b) + c;
+  3. $\exists$ 0 \in F s.t. 0 + a = a = a + 0;
+  4. \forall a, \exists -a s.t. (-a) + a = 0 = a + (-a)
+- Multiplicative axioms:
+  1. ab = ba;
+  2. a(bc) = (ab)c;
+  3. \exists 1 \in F s.t. 1a = a = a1;
+  4. \forall a \neq 0, \exists \frac{1}{a} s.t. \frac{1}{a}a = 1 = a\frac{1}{a}
+- Other axioms:
+  1. a(b+c) = ab + ac;
+  2. 0 \neq 1
+
+
+** Comments
+- if z + z = z, then z = 0\\
+  pf: -z + (z + z) = -z + z \Rightarrow (-z + z) + z = -z + z \Rightarrow 0 + z = 0 \Rightarrow z = 0.
+- 0z = 0\\
+- The commutativity in addition axioms is redundant.
+- If we replace the distributivity by c(b+a) = ac + bc, then not only the addition axioms' commutativity is redundant, but also the multiplicative commutativity is redundant.
