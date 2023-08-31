@@ -1,4 +1,4 @@
-% Created 2023-08-31 Thu 15:39
+% Created 2023-08-31 Thu 15:58
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -28,7 +28,7 @@
 \tableofcontents
 
 \section{Minimal}
-\label{sec:orge28720b}
+\label{sec:orgf8b4ae5}
 \begin{itemize}
 \item \(\mathbb{D}\) B is an ordered set, say \(\alpha \in B\) is minimal iff \(\forall x \in B, (x \leq \alpha \Rightarrow x = \alpha)\).
 \item Claim: Let B be the set of all upper bds for \(A \subseteq S\). For \(\alpha \in B\), the following are equivalent.
@@ -49,7 +49,7 @@ From right to left:\\[0pt]
 \end{itemize}
 
 \section{Least vs Minimal}
-\label{sec:orge33806f}
+\label{sec:org82a1b46}
 \begin{itemize}
 \item THM: Least \(\Rightarrow\) Minimal. In a total ordered set, Least \(\Leftrightarrow\) Minimal.
 \begin{itemize}
@@ -70,7 +70,7 @@ In this case, if we define set S s.t. S contains all sets above A. Then B1 and B
 \end{itemize}
 \end{itemize}
 \section{Compatibility}
-\label{sec:orgb52a026}
+\label{sec:orge2ba5ca}
 \begin{itemize}
 \item \(\mathbb{D}\) Let F be a field. The total strict order > on F is compatible iff \(\forall a,b,c \in F\),
 \begin{enumerate}
@@ -109,7 +109,7 @@ Then, \((-a)(-a) = (-1)a(-1)a = a^{2}\).
 \end{enumerate}
 \end{itemize}
 \section{Negative Elements}
-\label{sec:org733b782}
+\label{sec:orgf4c529e}
 \begin{itemize}
 \item \(\mathbb{D}\) \(P=\{x\in F | x>0\}\) the positive elements of F. Then, \(-P = \{-x | x \in P\} = \{x \in F | x < 0\}\).
 \item Claim: \(F = P \cup \{0\} \cup -P\). In other words, F can be written as a disjoint union and P, the set of all positive elements of F, is closed under \(+\) and \(\cdot\).\\[0pt]
@@ -141,5 +141,11 @@ Thus \(a-c\in P \Rightarrow a > c\), i.e. transitivity is satisfied.
 Coming next lecture!
 \end{enumerate}
 \end{itemize}
+\end{itemize}
+\section{Disjoint Union}
+\label{sec:org57c2fdd}
+\begin{itemize}
+\item \(\mathbb{D}\) Formally, let \(\{A_{i}:i\in I\}\) be a family of sets indexed by \(I\). The \textbf{disjoint union} is of this family is the set \(\underset{{i\in I}}\bigsqcup A_{i} = \underset{{i\in I}}\bigcup\{(x, i): x\in A_{i}\}\).
+\item \(\mathbb{M}\) In this disjoint set, all elements have the format as \((x, i)\). Therefore, this union is generated to be disjoint since even if \(A_{i}\) and \(A_{j}\) are not disjoint, the index element will make the resultant element disjoint.
 \end{itemize}
 \end{document}

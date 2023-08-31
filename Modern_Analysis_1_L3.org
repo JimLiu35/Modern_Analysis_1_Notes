@@ -82,3 +82,6 @@
        Thus \( a-c\in P \Rightarrow a > c \), i.e. transitivity is satisfied.
     c. Compatibility:\\
        Coming next lecture!
+* Disjoint Union
+- $\mathbb{D}$ Formally, let \( \{A_{i}:i\in I\} \) be a family of sets indexed by \( I \). The *disjoint union* is of this family is the set \( \underset{{i\in I}}\bigsqcup A_{i} = \underset{{i\in I}}\bigcup\{(x, i): x\in A_{i}\} \).
+- $\mathbb{M}$ In this disjoint set, all elements have the format as \( (x, i) \). Therefore, this union is generated to be disjoint since even if \( A_{i} \) and \( A_{j} \) are not disjoint, the index element will make the resultant element disjoint.
