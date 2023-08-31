@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-08-25 Fri 16:45 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modern Analysis 1 Lecture 1</title>
+<meta name="author" content="Jim Liu" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Modern Analysis 1 Lecture 1</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgff192ba">1. Nomenclature</a></li>
+<li><a href="#org9e95d1a">2. Partial Order</a></li>
+<li><a href="#org62de0e3">3. Strict Order</a></li>
+<li><a href="#org6ddcc3d">4. Bounds</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgff192ba" class="outline-2">
+<h2 id="orgff192ba"><span class="section-number-2">1.</span> Nomenclature</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>\(\mathbb{D}\) = Definition</li>
+<li>\(\mathbb{E}\) = Exercise or Example</li>
+<li>\(\bigvee\) = logic &ldquo;OR&rdquo;</li>
+<li>\(\bigwedge\) = logic &ldquo;AND&rdquo;</li>
+<li>\(\mathbb{M}\) = Personal Understanding</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9e95d1a" class="outline-2">
+<h2 id="org9e95d1a"><span class="section-number-2">2.</span> Partial Order</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+\(\mathbb{D}\): A (partial) order on the set S is a relation &ldquo;&le;&rdquo; on S that is
+</p>
+<ol class="org-ol">
+<li>reflexive:
+<ul class="org-ul">
+<li>What is Reflexive Relation?
+In set theory, a binary relation on A is said to be a <b>reflexive relation</b> if every element of the set is related to itself. For example, define a relation on the set of integers \mathbb{Z} as &rsquo;is equal to&rsquo;. Now, we know that each integer is equal to itself such as 0=0, 1=1, and so on. This implies every integer is related to itself. Hence, the relation &rsquo;is equal to&rsquo; on the set \(\mathbb{Z}\) is a reflexive relation.</li>
+<li>\(\mathbb{D}\): A binary relation R defined on a set A is said to be reflexive if, for every element a&isin; A, we have aRa, that is, (a,a) &isin; R.</li>
+<li>\(\mathbb{M}\) if R is a relation and is defined for a set A, this relation is reflexive if aRa is true. \(\mathbb{E}\) for integer set \(\mathbb{Z}\), if R is defined as /leq, then since 1 &isin; \(\mathbb{Z}\) and 1 &le; 1 is ture. Hence, R = &le; is a reflexive relation. Counter \(\mathbb{E}\) if R is defined as &lt;, then since 1 &isin; \(\mathbb{Z}\) and 1 &lt; 1 is false. Hence, &lt; is not a reflexive relationship.</li>
+</ul></li>
+<li>antisymmetric: a &le; b \(\bigwedge\) b leq a &rArr; a = b</li>
+<li>transitive: a &le; b \(\bigwedge\) b &le; c &rArr; a &le; c</li>
+</ol>
+
+
+<p>
+\(\mathbb{D}\) &le; is <b>total</b> iff &forall; a,b &isin; S, a &le; b \(\bigvee\) b &le; a
+</p>
+</div>
+</div>
+<div id="outline-container-org62de0e3" class="outline-2">
+<h2 id="org62de0e3"><span class="section-number-2">3.</span> Strict Order</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+\(\mathbb{D}\) A <b>strict order</b> on S is a relation &lt; that is
+</p>
+<ol class="org-ol">
+<li>irreflexive;</li>
+<li>transitive: a &lt; b \(\bigwedge\) b &lt; c &rArr; a &lt; c.</li>
+</ol>
+
+
+<p>
+Note: from PO (partial order) &harr; SO (strict order):
+</p>
+<ol class="org-ol">
+<li><p>
+&rarr;: Given &le;, \(\mathbb{D}\) a &lt; b := (a &le; b) \(\bigwedge\) (a &ne; b)
+</p>
+<div class="proof" id="org532a7b8">
+<p>
+(Proof via Definition)<br />
+</p>
+<ol class="org-ol">
+<li>Show &lt; is transitive, i.e. a &le; c \(\bigwedge\) a &ne; c: <br />
+Spse a &lt; b and b &lt; c, i.e. spse (a &le; b) \(\bigwedge\) (a &ne; b) \(\bigwedge\) (b &le; c) \(\bigwedge\) (b &ne; c),<br />
+&because; According to \(\mathbb{D}\) of partial order, &le; is transitive,<br />
+&there4; a &le; c <br />
+Spse a = c<br />
+Then 1. a &le; b and 2. b &le; a<br />
+&rArr; a = b (as &le; is antisymmetric)<br />
+but a &ne; b, \(\Rightarrow\!\Leftarrow\) <br />
+Thus, &lt; is transitive.</li>
+<li>Show &lt; is irreflexive<br />
+a &lt; a &rArr; (a &le; a) \(\bigwedge\) (a &ne; a)<br />
+(&not; (a &ne; a) is part of \(\mathbb{D}\))<br />
+Why? This proof seems trivial to me.这个地方到底证明了什么? &gt;的定义已经很明显了，为什么还要证明?</li>
+</ol>
+
+</div></li>
+<li>&larr;: Given &lt;, \(\mathbb{D}\) a &le; b := (a &lt; b) \(\bigvee\) (a=b)</li>
+</ol>
+
+
+<p>
+\(\mathbb{E}\) X is any set, S = \(\mathbb{P}(x)\) i.e. power set. For A, B &isin; S, A &le; B := A \subseteq B defines a partial order. Is it total?<br />
+Ans: not aways. It is not total when and only when |x| &le; 1.<br />
+Note: Rudin only considers total strict orders, coz Rudin says &ldquo;order is transitive and trichotomous (i.e. a &lt; b \(\bigvee\) a = b \(\bigvee\) a &gt; b )&rdquo;
+</p>
+</div>
+</div>
+<div id="outline-container-org6ddcc3d" class="outline-2">
+<h2 id="org6ddcc3d"><span class="section-number-2">4.</span> Bounds</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>\(\mathbb{D}\) Let &lt;  be an order on S, say a &isin; S is <b>greatest</b> iff &forall; s &isin; S, s &le; a.</li>
+<li>\(\mathbb{E}\) How many greatest elements do S contain?
+Ans: There may be none. e.g. let S = \(\mathbb{P}(x)\setminus\{x\}\) where \(\mathbb{P}(x)\) denotes the power set of x. If there are greatest element, it will be unique.</li>
+<li>\(\mathbb{D}\) Let (S, &le;) be given and A \subseteq S. b &isin; S is an upper bound for A iff &forall; a &isin; A, a &le; b, and b needn&rsquo;t be an element of A.<br />
+We say A is bounded above iff such a b exists.</li>
+<li>\(\mathbb{D}\) Given (S, &le;), the <b>least upper bound</b> of A in S is the [least] [upper bound] of A in S, when such exists. <br />
+Note: the set of UBs for A may not have a least element. If it has one, it is unique and called the supremum of A (sup(A) or lub(A)).<br />
+Similar concepts exist for the greatest lower bound: inf(A) or glb(A).</li>
+<li><b>THM</b>: for (S, &le;), IF each nonempty subset of S that is bounded above has a lub, THEN, each nonempty subset of S that is bounded below has a glb.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jim Liu</p>
+<p class="date">Created: 2023-08-25 Fri 16:45</p>
+</div>
+</body>
+</html>
