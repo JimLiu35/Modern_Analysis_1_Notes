@@ -1,0 +1,103 @@
+% Created 2023-09-06 Wed 15:37
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Jim Liu}
+\date{\today}
+\title{Modern Analysis 1 L5}
+\hypersetup{
+ pdfauthor={Jim Liu},
+ pdftitle={Modern Analysis 1 L5},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.2 (Org mode 9.6.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Superposition of Supremum}
+\label{sec:orgd682576}
+\begin{itemize}
+\item THM: If \(A, B \subseteq \mathbb{R}\) are nonempty and bounded above, then \(A + B := \{a + b : a\in A, b\in B\}\) is bounded above and \(sup(A + B) = sup(A) + sup(B)\).
+\begin{itemize}
+\item Proof:\\[0pt]
+Let \(\alpha = sup(A), \beta = sup(B)\)\\[0pt]
+For each \(a \in A\) and \(b \in B\), we have \(a \leq \alpha, b \leq \beta\) \\[0pt]
+So, \(a+b \leq \alpha + \beta\) (\(\mathbb{E}\))\\[0pt]
+Therefore, \(a+b\) is an upper bound for \(A + B\).\\[0pt]
+Therefore, \(sup(A+B) \leq sup(A)+sup(B)\) coz \(sup(A) + sup(B)\) is ``an'' upper bound, and \(sup(A+B)\) is the least upper bound.\\[0pt]
+To prove the reverse equality: two approaches.\\[0pt]
+\begin{itemize}
+\item Option 1: show \(\alpha + \beta \leq u\) for each upper bound \(u\) of \(A + B\)\\[0pt]
+Let u be any upper bound for \(A + B\)\\[0pt]
+Fix \(a\in A\) and let \(b \in B\) be arbitrary,\\[0pt]
+Then, \(a + b \leq u\)\\[0pt]
+\(\therefore b \leq u-a\) for any \(b \in B\)\\[0pt]
+\(\therefore u - a\) is an upper bound for B \(\Rightarrow \beta \leq u - a\)\\[0pt]
+\(\therefore a \leq u - \beta\)\\[0pt]
+Now, unfix \(a\), then \(u-\beta\) is an upper bound for A.\\[0pt]
+So, \(\alpha \leq u - \beta\)\\[0pt]
+\(\therefore \alpha + \beta \leq u\)\\[0pt]
+\(\therefore \alpha + \beta = sup(A+B)\).
+\item Option 2:\\[0pt]
+Spse \(sup(A+B) < \alpha + \beta\) and then aim at \(\Rightarrow\!\Leftarrow\)\\[0pt]
+Write \(\epsilon = \alpha + \beta - sup(A+B)>0\)\\[0pt]
+Then, \(\alpha - \frac{1}{2} \epsilon < \alpha \Rightarrow \alpha - \frac{1}{2}\) is not an upper bound for A coz \(\alpha = lub(A)\) \\[0pt]
+Thus, \(\exists a\in A: \alpha - \frac{1}{2}\epsilon < a\)\\[0pt]
+Similarly, \(\exists b \in B : \beta - \frac{1}{2}\epsilon < b\)\\[0pt]
+But now, \(a + b > \alpha + \beta - \epsilon = sup(A+B)\)\\[0pt]
+\(\Rightarrow\!\Leftarrow\)
+\end{itemize}
+\item \(\mathbb{E}\) \(AB = \{ab : a\in A, b \in B\}\), \(sup(AB)=sup(A)sup(B)\). This works if \(A, B \subseteq \mathbb{R}^+\) and A, B are nonempty and bounded above.
+\end{itemize}
+\end{itemize}
+\section{Square Root}
+\label{sec:org3ed687e}
+\begin{itemize}
+\item THM: Each positive real numebr has a unique positive square root.
+\begin{itemize}
+\item Proof: \\[0pt]
+Let \(a > 0\)\\[0pt]
+\(\exists ! \alpha \in \mathbb{R}^+\) s.t. \(\alpha\alpha = a\)\\[0pt]
+\begin{enumerate}
+\item Uniqueness: \\[0pt]
+\begin{itemize}
+\item Option 1: \\[0pt]
+Spse \(\alpha\alpha = a = \alpha' \alpha'\) (\(\alpha, \alpha' \in \mathbb{R}^+\))\\[0pt]
+Then \(0 = \alpha'\alpha' - \alpha\alpha = (\alpha'+\alpha)(\alpha' - \alpha)\)\\[0pt]
+Since \(\alpha' + \alpha > 0\), \(\alpha' - \alpha = 0\) \\[0pt]
+So, \(0 = \alpha' - \alpha \Rightarrow \alpha' = \alpha\).
+Hence, uniqueness is proved.
+\item Option 2: \\[0pt]
+Spse \(\alpha' \neq \alpha\) and then use trichotomy and aim for \(\Rightarrow\!\Leftarrow\)\\[0pt]
+The above assumption leads to either \(\alpha' < \alpha \bigvee \alpha' > \alpha\). This implies that \(\alpha' \alpha' < \alpha\alpha\) \(\bigvee\) \(\alpha' \alpha' > \alpha\alpha\), both of which lead to \(\Rightarrow\!\Leftarrow\).
+\end{itemize}
+\item Existence:\\[0pt]
+Define \(A = \{x\in \mathbb{R}^+: x^2<a \}\)\\[0pt]
+Then, \(A \neq \varnothing\) and bounded above. Here, we need to show \textbf{nonempty} and \textbf{Bounded above}.
+\begin{itemize}
+\item Nonempty:\\[0pt]
+If \(a<1, x=a\) coz \(a^2<a\)\\[0pt]
+If \(a = 1, x= \frac{1}{2}a\)\\[0pt]
+If \(a > 1, x = 1\).\\[0pt]
+Therefore, A contains any real x satisfying \(0 < x < a \wedge 1\) (Here, \(\wedge\) means take the minimum value.)\\[0pt]
+\(x < a \wedge 1 \Rightarrow x^{2}<x < a\)
+\item Bounded above by \(a \vee 1\) (Here, \(\vee\) means take the maximum value.)\\[0pt]
+Coming Next Lecture\ldots{}
+\end{itemize}
+\end{enumerate}
+\end{itemize}
+\end{itemize}
+\end{document}

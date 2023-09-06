@@ -1,0 +1,56 @@
+#+title: Modern Analysis 1 L5
+* Superposition of Supremum
+- THM: If \( A, B \subseteq \mathbb{R} \) are nonempty and bounded above, then \( A + B := \{a + b : a\in A, b\in B\} \) is bounded above and \( sup(A + B) = sup(A) + sup(B) \).
+  - Proof:\\
+    Let \( \alpha = sup(A), \beta = sup(B) \)\\
+    For each \( a \in A \) and \( b \in B \), we have \( a \leq \alpha, b \leq \beta \) \\
+    So, \( a+b \leq \alpha + \beta \) ($\mathbb{E}$)\\
+    Therefore, \( a+b \) is an upper bound for \( A + B\).\\
+    Therefore, \( sup(A+B) \leq sup(A)+sup(B) \) coz \( sup(A) + sup(B) \) is "an" upper bound, and \( sup(A+B) \) is the least upper bound.\\
+    To prove the reverse equality: two approaches.\\
+    - Option 1: show \( \alpha + \beta \leq u \) for each upper bound \( u \) of \( A + B \)\\
+      Let u be any upper bound for \( A + B \)\\
+      Fix \( a\in A \) and let \( b \in B \) be arbitrary,\\
+      Then, \( a + b \leq u \)\\
+      \( \therefore b \leq u-a \) for any \( b \in B \)\\
+      \( \therefore u - a  \) is an upper bound for B \( \Rightarrow \beta \leq u - a \)\\
+      \( \therefore a \leq u - \beta \)\\
+      Now, unfix \( a \), then \( u-\beta \) is an upper bound for A.\\
+      So, \( \alpha \leq u - \beta \)\\
+      \( \therefore \alpha + \beta \leq u \)\\
+      \( \therefore \alpha + \beta = sup(A+B) \).
+    - Option 2:\\
+      Spse \( sup(A+B) < \alpha + \beta \) and then aim at \( \Rightarrow\!\Leftarrow \)\\
+      Write \( \epsilon = \alpha + \beta - sup(A+B)>0 \)\\
+      Then, \( \alpha - \frac{1}{2} \epsilon < \alpha \Rightarrow \alpha - \frac{1}{2} \) is not an upper bound for A coz \(\alpha = lub(A) \) \\
+      Thus, \( \exists a\in A: \alpha - \frac{1}{2}\epsilon < a \)\\
+      Similarly, \( \exists b \in B : \beta - \frac{1}{2}\epsilon < b \)\\
+      But now, \( a + b > \alpha + \beta - \epsilon = sup(A+B) \)\\
+      \( \Rightarrow\!\Leftarrow  \)
+  - $\mathbb{E}$ \( AB = \{ab : a\in A, b \in B\} \), \( sup(AB)=sup(A)sup(B) \). This works if \( A, B \subseteq \mathbb{R}^+ \) and A, B are nonempty and bounded above.
+* Square Root
+- THM: Each positive real numebr has a unique positive square root.
+  - Proof: \\
+    Let \( a > 0 \)\\
+    \( \exists ! \alpha \in \mathbb{R}^+ \) s.t. \( \alpha\alpha = a \)\\
+    1) Uniqueness: \\
+       - Option 1: \\
+         Spse \( \alpha\alpha = a = \alpha' \alpha' \) (\( \alpha, \alpha' \in \mathbb{R}^+ \))\\
+         Then \( 0 = \alpha'\alpha' - \alpha\alpha = (\alpha'+\alpha)(\alpha' - \alpha) \)\\
+         Since \( \alpha' + \alpha > 0 \), \( \alpha' - \alpha = 0 \) \\
+         So, \( 0 = \alpha' - \alpha \Rightarrow \alpha' = \alpha \).
+         Hence, uniqueness is proved.
+       - Option 2: \\
+         Spse \( \alpha' \neq \alpha \) and then use trichotomy and aim for \( \Rightarrow\!\Leftarrow  \)\\
+         The above assumption leads to either \( \alpha' < \alpha \bigvee \alpha' > \alpha \). This implies that \( \alpha' \alpha' < \alpha\alpha \) $\bigvee$ \( \alpha' \alpha' > \alpha\alpha \), both of which lead to \( \Rightarrow\!\Leftarrow  \).
+    2) Existence:\\
+       Define \( A = \{x\in \mathbb{R}^+: x^2<a \} \)\\
+       Then, \( A \neq \varnothing \) and bounded above. Here, we need to show *nonempty* and *Bounded above*.
+       - Nonempty:\\
+         If \( a<1, x=a \) coz \( a^2<a \)\\
+         If \( a = 1, x= \frac{1}{2}a \)\\
+         If \( a > 1, x = 1 \).\\
+         Therefore, A contains any real x satisfying \( 0 < x < a \wedge 1 \) (Here, \( \wedge \) means take the minimum value.)\\
+         \( x < a \wedge 1 \Rightarrow x^{2}<x < a \)
+       - Bounded above by \( a \vee 1 \) (Here, \( \vee \) means take the maximum value.)\\
+         Coming Next Lecture...
