@@ -1,0 +1,79 @@
+#+title: Modern Analysis 1 L6
+#+author: Guanyun Liu
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[theorem]
+#+LATEX_HEADER: \newtheorem{lemma}[theorem]{Lemma}
+#+LATEX_HEADER: \newtheorem*{remark}{Remark}
+#+LATEX_HEADER: \newtheorem*{claim}{Claim}
+* Nomenclature
+\( \vee \) means max and \( \wedge \) means min
+* Squares
+Given \( a > 0 \), \( A = \{x\in \mathbb{R}^{+} : x^{2} < a \} \) is nonempty \( A \supseteq (0, 1\wedge a) \) and is bounded above by \( 1 \vee a \).
+#+begin_proof options
+If \( y > 1 \vee a \Rightarrow y^{2} > y > a \Rightarrow y \notin A \).\\
+\( \therefore y\in A \Rightarrow y \leq 1 \vee a \)
+#+end_proof
+\noindent Let \( \alpha = sup(A) \)
+#+begin_claim options
+\( \alpha^2 = a \)
+#+end_claim
+#+begin_proof options
+According to the Trichotomy, we want to rule out \( \alpha^{2} < a \) and \( \alpha^{2} > a \).
+- Case 1: Suppose \( \alpha^{2} < a \)\\
+  Then, \( \exists~t>0 \) s.t. \( (\alpha + t)^{2} < a \Leftrightarrow \alpha^{2} + 2\alpha t + t^{2} < a \equiv 2\alpha t + t^{2} < a - \alpha^{2} \).\\
+  Choose \( t \) to be small enough to make
+  1) \( 2\alpha t < \frac{a-\alpha^{2}}{2} \)\\
+     This implies that \( t < \frac{a-\alpha^{2}}{4\alpha} \)
+  2) \( t^{2} < \frac{a-\alpha^{2}}{2} \)\\
+     This implies that \( t < 1\wedge \frac{a-\alpha^{2}}{2} \)
+
+  Therefore, if \( 0 < t < 1\wedge \frac{a-\alpha^{2}}{4\alpha}\wedge \frac{a-\alpha^{2}}{2} \), then \( (\alpha + t)^{2} < a \Rightarrow (\alpha + t) \in A \).\\
+  But, \( \alpha \) is the least upper bound for \( A \), \( \Rightarrow\!\Leftarrow  \)\\
+  Therefore, \( \alpha^{2} \nless a \).
+
+- Case 2: Suppose \( \alpha^{2} > a \)\\
+  We can find \( t < \alpha \) s.t. \( (\alpha-t)^{2} > a \Leftrightarrow \alpha^{2} - 2\alpha t + t^{2} > a \Leftarrow \alpha^{2}-2\alpha t > a \Leftarrow \alpha^{2}-a > 2\alpha t \)\\
+  So, let \( t < \frac{\alpha^{2} -a}{2\alpha} \wedge \alpha \) to get \( \alpha -t > 0 \) s.t. \( (\alpha - t)^{2} > a \).\\
+  Now, \( \alpha -t \) is an upper bound for \( A \). But, \( \alpha \) is the least upper bound for \( A \), \( \Rightarrow\!\Leftarrow  \).
+Therefore, \( \alpha^{2} = a \)
+#+end_proof
+#+begin_remark options
+In \( \mathbb{R} \), the order structure can be recovered from the field structure because \( a > 0 \Leftrightarrow a \) is a non-zero square.
+#+end_remark
+#+begin_theorem options
+Let \( f:[0,1]\rightarrow [0,1] \) be increasing. Then, \( f \) has a fixed point (i.e. \( \exists~x\in [0,1]~s.t.~f(x)=x \))
+#+end_theorem
+#+begin_proof options
+Consider \( A = \{t\in [0,1]:t\leq f(t) \} \).\\
+\( A \neq \varnothing \) because \( 0 \in A \), and \( A \) is bounded above by 1.\\
+Let \( \alpha = sup A \).\\
+*Claim*: \( f(\alpha) = \alpha \)\\
+Suppose we can show \( \alpha \leq f(\alpha) \)\\
+Then \( f \uparrow \Rightarrow f(\alpha) \leq f(f(\alpha)) \)\\
+\( \therefore~f(\alpha)\in A \)\\
+\( \therefore~f(\alpha) \leq \alpha \) because \( \alpha \) is an upper bound for \( A \).\\
+Now, all that remains is to show \( f(\alpha) \) is an upper bound for \( A \), because then \( \alpha \leq f(\alpha) \) follows.\\
+Let \( t \in A \), then \( t \leq f(t) \).\\
+\( \alpha \) is an upper bound for \( A \Rightarrow t \leq \alpha \).\\
+\( f \uparrow \bigvee t \leq \alpha \Rightarrow f(t) \leq f(\alpha) \)\\
+\( t \leq f(t) \bigvee f(t) \leq f(\alpha) \Rightarrow t \leq f(\alpha) \).\\
+Thus, \( f(\alpha) \) is an upper bound for \( A \Rightarrow \alpha \leq f(\alpha) \).\\
+We have showed that \( f(\alpha) \leq \alpha \) and \( \alpha \leq f(\alpha) \).\\
+Therefore, \( f(\alpha) = \alpha \).
+#+end_proof
+#+begin_remark options
+This is a special case of a fixed-point theorem (due to Knaster and Taski) for complete lattices. The general gheorem leads to a nice proof of Schroder-Bernstein theorem.
+#+end_remark
+#+ATTR_LATEX: :options [Schroder-Bernstein Theorem]
+#+begin_theorem options
+If there exist injective functions \( f: A\rightarrow B \) and \( g:B\rightarrow A \) between the sets \( A, B \), then there exists a bijective function \( h:A\rightarrow B \).
+#+end_theorem
+
+# #+ATTR_LATEX: :options [Proof of important theorem]
+# #+begin_theorem
+# abc
+# #+end_theorem
