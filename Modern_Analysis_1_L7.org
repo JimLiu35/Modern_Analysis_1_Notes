@@ -1,0 +1,46 @@
+#+title: Modern Analysis 1 L7
+#+author: Guanyun Liu
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[theorem]
+#+LATEX_HEADER: \newtheorem{lemma}[theorem]{Lemma}
+#+LATEX_HEADER: \newtheorem*{remark}{Remark}
+#+LATEX_HEADER: \newtheorem*{claim}{Claim}
+* Recall
+- \( f:[0,1]\rightarrow [0,1] \) increasing,
+  - \( sup\{t\in [0,1]:t\leq f(t) \} \) is a fixed point (largest) of \( f \)
+  - \( inf\{ t\in [0,1]:f(t)\leq t \} \) is a smallest fixed point of \( f \)
+- $\mathbb{D}$ \( |a| = a \vee (-a) = \sqrt{a^{2}} \)
+
+* Inequalities
+** Cauchy-Schwartz (C.S.)
+If \( a_{1},\cdots,a_{n}, b_{1},\cdots,b_{n}\in \mathbb{R} \), then
+\begin{equation}
+\label{eq:CS}
+\( \big(\sum_{n=1}^{N}a_{n}b_{n}\big)^{2} \leq \big( \sum_{n=1}^{N}a_{n}^{2} \big) \big( \sum_{n=1}^{N}b_{n}^{2} \big) \)
+\end{equation}
+with equality iff \( \vec{a}||\vec{b} \). The following proves equality.
+#+begin_proof options
+One way to prove it without using geometric relationship is:
+- Case 1: N = 3\\
+  \ref{eq:CS} (when equality holds) can be rewritten as
+  $$( \vec{a}\cdot \vec{b} )^{2} + ||\vec{a}\times \vec{b}||^{2}= ||\vec{a}||^{2} ||\vec{b}||^{2} $$
+  where:
+  - \( ( \vec{a}\cdot \vec{b} )^{2} = (a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3})^{2} \)
+  - \( ||\vec{a}\times \vec{b}||^{2} = ||(a_{2}b_{3}-a_{3}b_{2}, a_{3}b_{2}, a_{3}b_{1}-a_{1}b_{3}, a_{1}b_{2}-a_{2}b_{1})||^{2} \)
+  The rest of the proof is just algebraic calculation.
+- Case 2: N = arbitrary
+  The *Lagrange's identity* is given as:
+  $$ \big(\sum_{n=1}^{N}a_{n}b_{n}\big)^{2} + \underset{1\leq p < q \leq N}{\sum}(a_{p}b_{q}-a_{q}b_{p})^{2} = \big( \sum_{n=1}^{N}a_{n}^{2} \big) \big( \sum_{n=1}^{N}b_{n}^{2} \big) $$
+  Then, CS is proved immediately because \( \underset{1\leq p < q \leq N}{\sum}(a_{p}b_{q}-a_{q}b_{p})^{2} \) is positive.\\
+  Equality holds \( \Leftrightarrow p < q \Rightarrow a_{p}b_{q} = a_{q}b_{p} \Leftrightarrow p\neq q \Rightarrow a_{p}b_{q}=a_{q}b_p \)
+#+end_proof
+** AM-GM (Arithmetic & Geometric Means)
+If \( a_{1},\cdots,a_{N}\in \mathbb{R}^{+} \), then
+\begin{equation}
+\frac{a_1+\cdots+a_N}{N} \geq (a_1 \cdot a_2 \cdot \cdots \cdot a_N)^{\frac{1}{N}}
+\end{equation}
+with equality iff \( a_{1}=\cdots=a_{N} \).
