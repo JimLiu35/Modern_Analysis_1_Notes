@@ -18,15 +18,16 @@
 * Inequalities
 ** Cauchy-Schwartz (C.S.)
 If \( a_{1},\cdots,a_{n}, b_{1},\cdots,b_{n}\in \mathbb{R} \), then
+#+NAME: eqn:1
 \begin{equation}
-\label{eq:CS}
+\label{eqn:1}
 \( \big(\sum_{n=1}^{N}a_{n}b_{n}\big)^{2} \leq \big( \sum_{n=1}^{N}a_{n}^{2} \big) \big( \sum_{n=1}^{N}b_{n}^{2} \big) \)
 \end{equation}
 with equality iff \( \vec{a}||\vec{b} \). The following proves equality.
 #+begin_proof options
 One way to prove it without using geometric relationship is:
 - Case 1: N = 3\\
-  \ref{eq:CS} (when equality holds) can be rewritten as
+  Eq. \ref{eqn:1} (when equality holds) can be rewritten as
   $$( \vec{a}\cdot \vec{b} )^{2} + ||\vec{a}\times \vec{b}||^{2}= ||\vec{a}||^{2} ||\vec{b}||^{2} $$
   where:
   - \( ( \vec{a}\cdot \vec{b} )^{2} = (a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3})^{2} \)
@@ -45,10 +46,10 @@ One way to prove it without using geometric relationship is:
 #+begin_proof options
 Let \( \vec{a},\vec{b}\in \mathbb{R}^{N} \). For \( t\in \mathbb{R} \) consider \( || \vec{b}-t\vec{a} ||^{2} \)\\
 \( 0 \leq || \vec{b}-t\vec{a} ||^{2} = (\vec{b}-t\vec{a})\cdot (\vec{b}-t\vec{a}) \Rightarrow 0\leq ||\vec{b}||^{2} - 2t(\vec{a}\cdot \vec{b})+t^{2}||\vec{a}||^{2} \)\\
-Thus, its discriminant (判别式) is at most 0, i.e. \( (\vec{a}\cdot \vec{b})^{2} \leq ||\vec{a}||^{2}||\vec{b}||^{2} \Rightarrow \) either only one real solution or no real solutions.\\
+Thus, its discriminant (i.e. \( b^{2}-4ac \)) is at most 0, i.e. \( (\vec{a}\cdot \vec{b})^{2} \leq ||\vec{a}||^{2}||\vec{b}||^{2} \Rightarrow \) either only one real solution or no real solutions.\\
 Equality holds if \( t \) is s.t. \( \vec{b}-t\vec{a} = \vec{0} \), i.e. \( \vec{b}||\vec{a} \).
 #+end_proof
-$\mathbb{E}$ If \( a_{1},\cdots,a_{N}\in \mathbb{R} \), then \( \frac{a_{1}+\cdots+a_{N}}{N} \leq \sqrt{\frac{a_{1}^{2}+\cdots+a_{N}^{2}}{N}} \)
+\noindent $\mathbb{E}$ If \( a_{1},\cdots,a_{N}\in \mathbb{R} \), then \( \frac{a_{1}+\cdots+a_{N}}{N} \leq \sqrt{\frac{a_{1}^{2}+\cdots+a_{N}^{2}}{N}} \)
 #+begin_proof options
 Use CS with \( b_{1}=\cdots=b_{N}=1 \)\\
 \( (a_{1}\cdot 1+a_{2}\cdot 1+\cdots+a_{N}\cdot 1)^{2} \leq (a_{1}^{2}+\cdots+a_{N}^{2})(1^{2}+\cdots+1^{2}) \)\\
