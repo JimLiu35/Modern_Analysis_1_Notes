@@ -36,7 +36,25 @@ One way to prove it without using geometric relationship is:
   The *Lagrange's identity* is given as:
   $$ \big(\sum_{n=1}^{N}a_{n}b_{n}\big)^{2} + \underset{1\leq p < q \leq N}{\sum}(a_{p}b_{q}-a_{q}b_{p})^{2} = \big( \sum_{n=1}^{N}a_{n}^{2} \big) \big( \sum_{n=1}^{N}b_{n}^{2} \big) $$
   Then, CS is proved immediately because \( \underset{1\leq p < q \leq N}{\sum}(a_{p}b_{q}-a_{q}b_{p})^{2} \) is positive.\\
-  Equality holds \( \Leftrightarrow p < q \Rightarrow a_{p}b_{q} = a_{q}b_{p} \Leftrightarrow p\neq q \Rightarrow a_{p}b_{q}=a_{q}b_p \)
+  Equality holds \( \Leftrightarrow p < q \Rightarrow a_{p}b_{q} = a_{q}b_{p} \Leftrightarrow p\neq q \Rightarrow a_{p}b_{q}=a_{q}b_p \)\\
+  Assume \( a_{m}\neq 0 \), then\\
+  \( n\neq m \Rightarrow a_{n}b_{m}=a_{m}b_{n}\Rightarrow b_{n}=\frac{b_{m}}{a_{m}}b_{n} \)\\
+  Also, \( b_{m}=\frac{b_{m}}{a_m}a_{m}\Rightarrow \vec{b}= \big( \frac{b_{m}}{a_m} \big) \vec{a} \). Therefore, \( \vec{a} \) and \( \vec{b} \) are parallel to each other.
+#+end_proof
+\noindent Alternative proof (standard):
+#+begin_proof options
+Let \( \vec{a},\vec{b}\in \mathbb{R}^{N} \). For \( t\in \mathbb{R} \) consider \( || \vec{b}-t\vec{a} ||^{2} \)\\
+\( 0 \leq || \vec{b}-t\vec{a} ||^{2} = (\vec{b}-t\vec{a})\cdot (\vec{b}-t\vec{a}) \Rightarrow 0\leq ||\vec{b}||^{2} - 2t(\vec{a}\cdot \vec{b})+t^{2}||\vec{a}||^{2} \)\\
+Thus, its discriminant (判别式) is at most 0, i.e. \( (\vec{a}\cdot \vec{b})^{2} \leq ||\vec{a}||^{2}||\vec{b}||^{2} \Rightarrow \) either only one real solution or no real solutions.\\
+Equality holds if \( t \) is s.t. \( \vec{b}-t\vec{a} = \vec{0} \), i.e. \( \vec{b}||\vec{a} \).
+#+end_proof
+$\mathbb{E}$ If \( a_{1},\cdots,a_{N}\in \mathbb{R} \), then \( \frac{a_{1}+\cdots+a_{N}}{N} \leq \sqrt{\frac{a_{1}^{2}+\cdots+a_{N}^{2}}{N}} \)
+#+begin_proof options
+Use CS with \( b_{1}=\cdots=b_{N}=1 \)\\
+\( (a_{1}\cdot 1+a_{2}\cdot 1+\cdots+a_{N}\cdot 1)^{2} \leq (a_{1}^{2}+\cdots+a_{N}^{2})(1^{2}+\cdots+1^{2}) \)\\
+\( \Rightarrow (a_{1}+\cdots+a_{N})^{2} \leq N(a_{1}^{2}+\cdot+a_{N}^{2}) \)\\
+\( \Rightarrow \big( \frac{a_{1}+\cdots+a_{N}}{N} \big)^{2} \leq \frac{a_{1}^{2}+\cdots+a_{N}^{2}}{N} \)\\
+Thus, \( \frac{a_{1}+\cdots+a_{N}}{N} \leq \sqrt{\frac{a_{1}^{2}+\cdots+a_{N}^{2}}{N}} \)
 #+end_proof
 ** AM-GM (Arithmetic & Geometric Means)
 If \( a_{1},\cdots,a_{N}\in \mathbb{R}^{+} \), then
