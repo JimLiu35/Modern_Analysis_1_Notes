@@ -1,0 +1,116 @@
+#+title: Modern Analysis 1 L8 and L9
+#+author: Guanyun Liu
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amsthm, amsmath}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{definition}{Definition}[section]
+#+LATEX_HEADER: \newtheorem{corollary}{Corollary}[theorem]
+#+LATEX_HEADER: \newtheorem{proposition}{Proposition}[theorem]
+#+LATEX_HEADER: \newtheorem{lemma}[theorem]{Lemma}
+#+LATEX_HEADER: \newtheorem*{remark}{Remark}
+#+LATEX_HEADER: \newtheorem*{claim}{Claim}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \doublespacing
+
+* Recall
+- *AMGM* If \( a_{1}, \cdots, a_{n} \geq 0 \), then \( \frac{a_{1}+\cdots+a_{n}}{n} \geq (a_{1}\cdot\cdots\cdot a_{n})^{\frac{1}{n}} \) with equality \( \Leftrightarrow a_{1}=\cdots=a_{n} \).
+* Example 1
+$\mathbb{E}$ Maximize \( x(1-x)^{n} \) on \( (0,1) \).\\
+Solution:\\
+Consider the following numbers \( a_{0}=x, a_{1}=1-x,...,a_{n}=1-x \), according to AMGM we have\\
+\( (a_{0}a_{1}\cdots a_{n})^{\frac{1}{n+1}} \leq \frac{a_{0}+a_{1}+\cdots+a_{n}}{n+1} \)\\
+\( \Rightarrow (nx(1-x)^{n})^{\frac{1}{n+1}} \leq \frac{n}{n+1} \)\\
+\( \Rightarrow nx(1-x)^{n} \leq \big( \frac{n}{n+1} \big)^{n+1} \)\\
+\( \Rightarrow x(1-x)^{n} \leq \frac{n^{n}}{(n+1)^{n+1}} \)\\
+Equality holds \( \Leftrightarrow a_{0}=a_{1}=\cdots=a_{n} \), that is \( x = \frac{1}{n+1} \).
+* Example 2
+*Given \( a_{1},\cdots,a_{N}>0 \), show that if \( \pi \in S_{N} \), \( \sum_{n=1}^{N}\frac{a_{\pi(n)}}{a_{n}} \geq N \)*\\
+For example, \( a,b,c > 0 \), \( \frac{b}{c}+\frac{c}{a}+\frac{a}{b} \geq 3 \)
+#+begin_proof options
+Apply AMGM to \( \frac{a_{\pi_{q}}}{a_{1}},\cdots,\frac{a_{\pi_{N}}}{a_{N}} \)\\
+\( \frac{ \frac{a_{\pi_{1}}}{a_{1}} + \cdots + \frac{a_{\pi_{N}}}{a_{N}} }{N} \geq ( \frac{a_{\pi_{1}}}{a_{1}} \cdot \cdots \cdot \frac{a_{\pi_{N}}}{a_{N}}  )^{\frac{1}{N}} \)\\
+\( \because \pi \) is permutation of \( N \)\\
+\( \therefore \) RHS's numerator is exactly same as the denominator with different order\\
+\( \therefore \) RHS = 1\\
+\( \therefore \frac{ \frac{a_{\pi_{1}}}{a_{1}} + \cdots + \frac{a_{\pi_{N}}}{a_{N}} }{N} \geq 1 \)
+\( \therefore \frac{a_{\pi_{1}}}{a_{1}} + \cdots + \frac{a_{\pi_{N}}}{a_{N}} \geq N \) with equality holds if \( \pi = \) identity, i.e. \( a_{\pi_{i}} = a_{i} \)
+#+end_proof
+* Uniqueness of \( \mathbb{R} \)
+#+begin_theorem options
+If \( F \) and \( F' \) are fields with compatible total orders having the least upper bound property, then there exists a unique *field isomorphism* from \( F \rightarrow F' \).
+#+end_theorem
+#+begin_remark options
+The smallest (or prime) subfield of \( F \) is an isomorphic copy of the rationals, say \( \mathbb{Q} \). Similarly, \( F' \supseteq \mathbb{Q}' \).
+#+end_remark
+\noindent *Fact*: There is a unique field isomorphism \( \phi_{0}: \mathbb{Q} \rightarrow \mathbb{Q}' \)\\
+\noindent *Fact*: If \( a \in F \), and \( \mathbb{Q}_a := \{ q\in \mathbb{Q}:q < a \} \), then \( sup \mathbb{Q}_{a} = a \)
+#+begin_proof options
+\( \mathbb{Q}_{a} \neq \varnoting \) due to Archimedies.\\
+Thus, \( \mathbb{Q}_a \) is nonempty and bounded above.\\
+The $\mathbb{D}$ of \( \mathbb{Q}_a \Rightarrow a \) is an upper bound for \( \mathbb{Q}_a \)\\
+Now, we need to show \( a \) is the least upper bound by showing if there exists a \( t < a \), then \( t \) is not an upper bound.\\
+Let \( t < a \)\\
+Archimedies gives us \( q \in \mathbb{Q} s.t. t < q < a \)\\
+\( a < a \bigwedge q \in \mathbb{Q} \Rightarrow q \in \mathbb{Q}_a \)\\
+Therefore, \( t<q \) implies \( t \) is not an upper bound for \( \mathbb{Q}_a \).
+Thus, \( sup \mathbb{Q}_a = a \).
+#+end_proof
+\noindent Let's define a function \( \phi: F\rightarrow F' \) as \( \phi(a) = sup[\phi_{0}(\mathbb{Q}_a)] \), where \( \phi_{0}: \mathbb{Q}\rightarrow \mathbb{Q}_a \). Then, we have the following claims:
+- \( \phi_{0}(\mathbb{Q}_a) \neq \varnothing \) because \( \phi_{0} \) is isomorphism, i.e. bijective mapping, and \( \mathbb{Q}_a \neq \varnothing \).
+- \( \phi_{0}(\mathbb{Q}_a) \) is bounded above by Archimedies.
+  #+begin_proof options
+Choose \( n > a, n\in \mathbb{Z} \), because integers are not bounded above.\\
+Now, \( q\in \mathbb{Q}_a \Rightarrow n > a > q \)\\
+\( n > q \Rightarrow \phi_0(n) > \phi_0(q) \) because the isomorphism \( \phi_{0} \) preserves order ($\mathbb{E}$).\\
+Therefore, \( \phi_{0}_(n) \) is an upper bound for \( \phi_{0}(\mathbb{Q}_a) \)
+  #+end_proof
+- \( \phi:F\rightarrow F' \) is an isomorphism.
+  #+begin_proof options
+We need to show:
+1. \( \phi(a+b) = \phi(a) + \phi(b) \)\\
+   First, \( \mathbb{Q}_{a+b} = \mathbb{Q}_a+ \mathbb{Q}_b \).\\
+   If so, (assumping this is correct), then \( \phi_{o}(\mathbb{Q}_{a+b}) = \phi_0(\mathbb{Q}_a) + \phi_0(\mathbb{Q}_b) \), because \( \phi_{0} \) is isomorphism.
+   \begin{align*}
+    \therefore \phi(a+b) &= sup[\phi_{0}(\mathbb{Q}_{a+b})]\\
+    & = sup[\phi_0(\mathbb{Q}_a) + \phi_0(\mathbb{Q}_b)]\\
+    & = sup[\phi_0(\mathbb{Q}_a)] + sup[\phi_0(\mathbb{Q}_b)]\\
+    & = \phi(a) + \phi(b)
+   \end{align*}
+   Now, to prove \( \mathbb{Q}_{a+b} = \mathbb{Q}_a+ \mathbb{Q}_b \), we need to show \( \mathbb{Q}_{a+b} \subseteq \mathbb{Q}_a+ \mathbb{Q}_b \) and \( \mathbb{Q}_{a+b} \supseteq \mathbb{Q}_a+ \mathbb{Q}_b \)\\
+   "\( \subseteq \)" is easy: if \( x \in \mathbb{Q}_a \) and \( y \in \mathbb{Q}_b \), then \( x + y < a+b \) and \( x + y \in \mathbb{Q}_{a+b} \)\\
+   "\( \supseteq \)" is not easy because the set \( \mathbb{Q}_{a} \) is defined as \( q \) strictly less (\( < \)) than \( a \).\\
+   Let \( z \in \mathbb{Q}_{a+b} \), then \( \mathbb{Q} \ni z < a + b \).\\
+   We want \( z = x + y \) for some \( x \in \mathbb{Q}_a \) and \( y \in \mathbb{Q}_b \).\\
+   Since \( z - a < b \), according to Archimedes: \( \exists y \in \mathbb{Q}~s.t.~z-a<y<b \Rightarrow y \in \mathbb{Q}_b \) \\
+   Let \( x = z - y \), certainly \( x \in \mathbb{Q} \).\\
+   Since \( z - b < a \), again by Archimedes, \( \exists x \in \mathbb{Q} \)\\
+   *Check \( x<a \) HOW?????*
+2. \( \phi(ab) = \phi(a)\phi(b) \)
+
+
+  #+end_proof
+* Isomorphism
+#+begin_definition options
+Given two groups \( (G, *) \) and \( (H, \odot) \), a *group isomorphism* from \( (G, *) \) to \( (H, \odot) \) is a bijective group homomorphism from \( G \) to \( H \). This means that a group isomorphism is a bijective function \( f:G\rightarrow H \)such that \( \forall u,v \in G \), it holds that
+\begin{equation*}
+f(u*v) = f(u) \odot f(v)
+\end{equation*}
+#+end_definition
+\nodient The two groups \( G \) and \( H \) are isomorphic if there exists an isomorphism from one to the other, denoted as \( (G,*)\cong (H,\odot) \)
+* Homomorphism
+#+begin_definition options
+Let \( (G, *) \) and \( (H, \odot) \) be groups. A homomorphism \( f: G \rightarrow H \) is a function s.t. \( \forall g_{1}, g_{2} \in G \),
+$$ f(g_{1}*g_{2}) = f(g_{1}) \odot f(g_2) $$
+#+end_definition
+#+begin_definition options
+Equivalently, the function \( f: G\rightarrow H \) is a group homomorphism if whenever \( a, b, c\in G \)
+$$ a * b = c \Rightarrow f(a)\odot f(b) = f(c) $$
+#+end_definition
+\noindent $\mathbb{M}$ The purpose of defining a group homomorphism is to create functions that *preserve* the algebraic structure. According to the alternative definition, the group \( H \) in some sense has a similar algebraic structure as \( G \) and the homomorphism \( h \) preserves that.
+#+begin_proposition options
+Let \( G \) and \( H \) be groups, written multiplicatively and let \( f:G\rightarrow H \) be a homomorphism. Then,
+1. \( f(1) = 1 \), where the 1 on the left is the identity in \( G \) and the 1 one the right is the identity in \( H \). In other words, \( f \) taks the identity in \( G \) to the identity in \( H \).
+2. \( \forall~g\in G \), \( f(g^{-1}) = \big( f(g) \big)^{-1} \)
+#+end_proposition
